@@ -1,7 +1,7 @@
 ## cssファイルからstyled-componentsを生成したい。
 * inputにsample.cssを置いて
 ```
-python sc_generator sample
+python sc_generator.py sample
 ```
 * outputにsample.tsができる
 * タグの指定はできない(全部divで出てくる)
