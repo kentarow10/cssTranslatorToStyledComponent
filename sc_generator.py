@@ -63,9 +63,9 @@ class Child:
     {2}
 }}""".format(self.className,self.key,self.cssWithCoron[self.key])
         else:
-            return """${{{0}}}::after{
+            return """err::after{
     something wrong
-}""".format("class")
+}"""
 
 class PCPair:
     def __init__(self,k,v):
@@ -172,6 +172,11 @@ class StyledComponentGenerateManager:
         with open(path, mode='w') as f:
             f.write(output)
 
+def toUpperOnlyFirstChar(name):
+    ch = name[0].upper()
+    name = ch + name[1:]
+    return name
+
 def main():
     args = sys.argv
     if 2 != len(args):
@@ -224,12 +229,9 @@ def main():
         k = k.replace('.','')
         k = k.replace('-','_')
         k = k.strip()
-        name = k.capitalize()
+        name = toUpperOnlyFirstChar(k)
         v = v.strip()
         scgm.inputKeyValue(name,v)
-
-    # 順序依存性解決
-    # 包含関係解決
 
     scgm.output(out_path)
 
